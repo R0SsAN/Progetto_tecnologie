@@ -7,7 +7,7 @@ package progetto_centralina_java;
 
 /**
  *
- * @author Luca
+ * @author Lorenzo
  */
 public class ThreadGestioneArduino {
     
