@@ -106,7 +106,7 @@ void invioSerialeSicurezza()
 }
 void invioSerialeJava()
 {
-  String invio=valoreLuce+"-"+valoreTemperatura+"-"+distanza1+"-"+distanza2+";";
+  String invio=String(valoreLuce)+"-"+String(valoreTemperatura)+"-"+String(distanza1)+"-"+String(distanza2)+";";
   Serial.print(invio);
 }
 void leggiSerialeJava()
