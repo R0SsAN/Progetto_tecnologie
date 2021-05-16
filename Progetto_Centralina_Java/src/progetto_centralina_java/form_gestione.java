@@ -11,6 +11,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.lang.Integer;
 import static java.lang.Integer.parseInt;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,9 +23,14 @@ public class form_gestione extends javax.swing.JFrame {
      * Creates new form form_gestione
      */
     Utenti listaUtenti;
+    ThreadSeriale tSeriale;
+    ThreadGestioneArduino tGestione;
     public form_gestione() {
         initComponents();
         listaUtenti=Utenti.getInstance();
+        tSeriale=ThreadSeriale.getInstance();
+        //tGestione=ThreadGestioneArduino.getInstance();
+        
     }
 
     /**
@@ -40,6 +46,14 @@ public class form_gestione extends javax.swing.JFrame {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem5 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem6 = new javax.swing.JCheckBoxMenuItem();
+        jPopupMenu3 = new javax.swing.JPopupMenu();
+        jCheckBoxMenuItem7 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem8 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem9 = new javax.swing.JCheckBoxMenuItem();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new Panel_rotondo(50, new Color(52,202,123));
         jLabel1 = new javax.swing.JLabel();
@@ -47,6 +61,7 @@ public class form_gestione extends javax.swing.JFrame {
         jPanel5 = new Panel_rotondo(50, new Color(52,202,123));
         jButton6 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
         jPanel6 = new Panel_rotondo(50, new Color(52,202,123));
         jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -56,6 +71,7 @@ public class form_gestione extends javax.swing.JFrame {
         jPanel9 = new Panel_rotondo(50, new Color(52,202,123));
         jButton7 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
         jPanel10 = new Panel_rotondo(50, new Color(52,202,123));
         jButton5 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -92,17 +108,57 @@ public class form_gestione extends javax.swing.JFrame {
             }
         });
 
-        jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("Bottone 1");
         jPopupMenu1.add(jCheckBoxMenuItem1);
 
-        jCheckBoxMenuItem2.setSelected(true);
         jCheckBoxMenuItem2.setText("Bottone2");
         jPopupMenu1.add(jCheckBoxMenuItem2);
 
-        jCheckBoxMenuItem3.setSelected(true);
         jCheckBoxMenuItem3.setText("Bottone3");
         jPopupMenu1.add(jCheckBoxMenuItem3);
+
+        jPopupMenu2.setAlignmentX(50.0F);
+        jPopupMenu2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jPopupMenu2PopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+
+        jCheckBoxMenuItem4.setText("Bottone 1");
+        jPopupMenu2.add(jCheckBoxMenuItem4);
+
+        jCheckBoxMenuItem5.setText("Bottone2");
+        jPopupMenu2.add(jCheckBoxMenuItem5);
+
+        jCheckBoxMenuItem6.setText("Bottone3");
+        jPopupMenu2.add(jCheckBoxMenuItem6);
+
+        jPopupMenu3.setAlignmentX(50.0F);
+        jPopupMenu3.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jPopupMenu3PopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+
+        jCheckBoxMenuItem7.setSelected(true);
+        jCheckBoxMenuItem7.setText("Bottone 1");
+        jPopupMenu3.add(jCheckBoxMenuItem7);
+
+        jCheckBoxMenuItem8.setSelected(true);
+        jCheckBoxMenuItem8.setText("Bottone2");
+        jPopupMenu3.add(jCheckBoxMenuItem8);
+
+        jCheckBoxMenuItem9.setSelected(true);
+        jCheckBoxMenuItem9.setText("Bottone3");
+        jPopupMenu3.add(jCheckBoxMenuItem9);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +172,11 @@ public class form_gestione extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(52, 202, 123));
         jButton2.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 20)); // NOI18N
         jButton2.setText("Accendi");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -145,21 +206,37 @@ public class form_gestione extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(52, 202, 123));
         jButton6.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 20)); // NOI18N
         jButton6.setText("Accendi");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 22)); // NOI18N
         jLabel5.setText("Scena 2");
+
+        jButton9.setBackground(new java.awt.Color(32, 151, 111));
+        jButton9.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 13)); // NOI18N
+        jButton9.setText("Configura scena");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,6 +245,8 @@ public class form_gestione extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -176,6 +255,11 @@ public class form_gestione extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(52, 202, 123));
         jButton3.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 20)); // NOI18N
         jButton3.setText("Accendi");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 22)); // NOI18N
         jLabel2.setText("Bottone 2");
@@ -208,6 +292,11 @@ public class form_gestione extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(52, 202, 123));
         jButton4.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 20)); // NOI18N
         jButton4.setText("Accendi");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 22)); // NOI18N
         jLabel3.setText("Bottone 3");
@@ -240,21 +329,37 @@ public class form_gestione extends javax.swing.JFrame {
         jButton7.setBackground(new java.awt.Color(52, 202, 123));
         jButton7.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 20)); // NOI18N
         jButton7.setText("Accendi");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 22)); // NOI18N
         jLabel6.setText("Scena 3");
+
+        jButton10.setBackground(new java.awt.Color(32, 151, 111));
+        jButton10.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 13)); // NOI18N
+        jButton10.setText("Configura scena");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,6 +368,8 @@ public class form_gestione extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton10)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -271,10 +378,17 @@ public class form_gestione extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(52, 202, 123));
         jButton5.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 20)); // NOI18N
         jButton5.setText("Accendi");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 22)); // NOI18N
         jLabel4.setText("Scena 1");
 
+        jButton8.setBackground(new java.awt.Color(32, 151, 111));
+        jButton8.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 13)); // NOI18N
         jButton8.setText("Configura scena");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,10 +404,10 @@ public class form_gestione extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
@@ -393,8 +507,8 @@ public class form_gestione extends javax.swing.JFrame {
         jLabel13.setText("Distanza sensore 1:");
         jLabel13.setToolTipText("");
 
-        jSlider3.setMaximum(24);
-        jSlider3.setMinorTickSpacing(1);
+        jSlider3.setMaximum(500);
+        jSlider3.setMinorTickSpacing(40);
         jSlider3.setPaintLabels(true);
         jSlider3.setSnapToTicks(true);
         jSlider3.setValue(0);
@@ -414,8 +528,8 @@ public class form_gestione extends javax.swing.JFrame {
         jLabel15.setText("0");
         jLabel15.setToolTipText("");
 
-        jSlider4.setMaximum(24);
-        jSlider4.setMinorTickSpacing(1);
+        jSlider4.setMaximum(500);
+        jSlider4.setMinorTickSpacing(40);
         jSlider4.setPaintLabels(true);
         jSlider4.setSnapToTicks(true);
         jSlider4.setValue(0);
@@ -621,10 +735,12 @@ public class form_gestione extends javax.swing.JFrame {
 
     private void jSlider3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider3MouseDragged
         // TODO add your handling code here:
+        jLabel14.setText(Integer.toString(jSlider3.getValue()));
     }//GEN-LAST:event_jSlider3MouseDragged
 
     private void jSlider4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider4MouseDragged
         // TODO add your handling code here:
+        jLabel15.setText(Integer.toString(jSlider4.getValue()));
     }//GEN-LAST:event_jSlider4MouseDragged
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -636,7 +752,18 @@ public class form_gestione extends javax.swing.JFrame {
 
     private void jPopupMenu1PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jPopupMenu1PopupMenuWillBecomeInvisible
         // TODO add your handling code here:
+        listaUtenti.corrente.scene[0]=new Scena();
+        if(jCheckBoxMenuItem1.isSelected())
+            listaUtenti.corrente.scene[0].aggiungiComandato(0);
+        if(jCheckBoxMenuItem2.isSelected())
+            listaUtenti.corrente.scene[0].aggiungiComandato(1);
+        if(jCheckBoxMenuItem3.isSelected())
+            listaUtenti.corrente.scene[0].aggiungiComandato(2);
         
+        if(listaUtenti.corrente.scene[0].pulsantiComandati.length>0)
+            tSito.inviaRichiesta("?action=set_scene&data=","0|true");
+        else
+            tSito.inviaRichiesta("?action=set_scene&data=","0|false");
     }//GEN-LAST:event_jPopupMenu1PopupMenuWillBecomeInvisible
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -670,6 +797,97 @@ public class form_gestione extends javax.swing.JFrame {
             
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        int mPosX=MouseInfo.getPointerInfo().getLocation().x;
+        int mPosY=MouseInfo.getPointerInfo().getLocation().y;
+        jPopupMenu2.show(this, mPosX, mPosY);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        int mPosX=MouseInfo.getPointerInfo().getLocation().x;
+        int mPosY=MouseInfo.getPointerInfo().getLocation().y;
+        jPopupMenu3.show(this, mPosX, mPosY);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jPopupMenu2PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jPopupMenu2PopupMenuWillBecomeInvisible
+        // TODO add your handling code here:
+        listaUtenti.corrente.scene[1]=new Scena();
+        if(jCheckBoxMenuItem1.isSelected())
+            listaUtenti.corrente.scene[1].aggiungiComandato(0);
+        if(jCheckBoxMenuItem2.isSelected())
+            listaUtenti.corrente.scene[1].aggiungiComandato(1);
+        if(jCheckBoxMenuItem3.isSelected())
+            listaUtenti.corrente.scene[1].aggiungiComandato(2);
+        
+        if(listaUtenti.corrente.scene[1].pulsantiComandati.length>0)
+            tSito.inviaRichiesta("?action=set_scene&data=","1|true");
+        else
+            tSito.inviaRichiesta("?action=set_scene&data=","1|false");
+    }//GEN-LAST:event_jPopupMenu2PopupMenuWillBecomeInvisible
+
+    private void jPopupMenu3PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jPopupMenu3PopupMenuWillBecomeInvisible
+        // TODO add your handling code here:
+        listaUtenti.corrente.scene[2]=new Scena();
+        if(jCheckBoxMenuItem1.isSelected())
+            listaUtenti.corrente.scene[2].aggiungiComandato(0);
+        if(jCheckBoxMenuItem2.isSelected())
+            listaUtenti.corrente.scene[2].aggiungiComandato(1);
+        if(jCheckBoxMenuItem3.isSelected())
+            listaUtenti.corrente.scene[2].aggiungiComandato(2);
+        
+        if(listaUtenti.corrente.scene[2].pulsantiComandati.length>0)
+            tSito.inviaRichiesta("?action=set_scene&data=","2|true");
+        else
+            tSito.inviaRichiesta("?action=set_scene&data=","2|false");
+    }//GEN-LAST:event_jPopupMenu3PopupMenuWillBecomeInvisible
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(!listaUtenti.corrente.pulsanti[0])
+            listaUtenti.corrente.pulsanti[0]=true;
+        else
+            listaUtenti.corrente.pulsanti[0]=false;
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if(!listaUtenti.corrente.pulsanti[1])
+            listaUtenti.corrente.pulsanti[1]=true;
+        else
+            listaUtenti.corrente.pulsanti[1]=false;
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        if(!listaUtenti.corrente.pulsanti[2])
+            listaUtenti.corrente.pulsanti[2]=true;
+        else
+            listaUtenti.corrente.pulsanti[2]=false;
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < listaUtenti.corrente.scene[0].pulsantiComandati.length; i++) {
+            listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[0].pulsantiComandati[i]]=true;
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < listaUtenti.corrente.scene[1].pulsantiComandati.length; i++) {
+            listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[1].pulsantiComandati[i]]=true;
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < listaUtenti.corrente.scene[1].pulsantiComandati.length; i++) {
+            listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[1].pulsantiComandati[i]]=true;
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -711,6 +929,7 @@ public class form_gestione extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -718,9 +937,16 @@ public class form_gestione extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem7;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem8;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -745,10 +971,11 @@ public class form_gestione extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSlider jSlider2;
     private javax.swing.JSlider jSlider3;
