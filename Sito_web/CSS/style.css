@@ -1,0 +1,106 @@
+*{
+    font-family: 'Inter', sans-serif;
+}
+body{
+    background-color: rgb(33, 34, 34);
+}
+h1{
+    text-align: center;
+    color:white;
+    font-weight: bold;
+    font-size: 35px;
+}
+.container-vue{
+    width:100%;
+    height:100%;
+}
+.container-pulsanti{
+    margin:auto;
+    background-color: rgb(37,51,61);
+    border-radius: 30px;
+    width:80%;
+    margin-top:100px;
+    padding:30px;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.pulsante{
+    margin:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: lightseagreen;
+    width:200px;
+    height: 200px;
+    border-radius: 20px;
+    padding:15px;
+    overflow: hidden;
+    text-align:center;
+}
+h2{
+    margin-bottom:20px;
+}
+
+/* CSS per bottoni */
+  .btn-bg{
+    width: 82px;
+    height: 82px;
+    background: #cdd3c9;
+    border-radius: 41px;
+    border-bottom: 2px solid #2a2a2a;
+    border-top: 2px solid #fff;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    margin-bottom:15px;
+  }
+  
+  .btn-bg.active{
+    background: #2d3036;
+    border-bottom: 2px solid #ffcab6;
+    border-top: 2px solid #e66847;
+  }
+  
+  .btn-highlight{
+    width: 41px;
+    height: 82px;
+    background: #eee;
+    margin-left: 41px;
+  }
+  
+  .active .btn-highlight{
+    background: #52555d;
+  }
+  
+  .btn-ring{
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border: 10px solid #2a2a2a;
+    top: 10px;
+    left: 10px;
+    border-radius: 31px;
+  }
+  
+  .active .btn-ring{
+    border-color: #61fc8c; 
+  }
+  
+  .ring-line{
+    width: 10px;
+    height: 41px;
+    margin: -14px auto;
+    background: #2a2a2a;
+    border-radius: 7px;
+    border-right: 3px solid #eee;
+    border-left: 3px solid #cdd3c9;
+  }
+  
+  .active .ring-line{
+    background: #61fc8c;
+    border-right: 3px solid #52555d;
+    border-left: 3px solid #2d3036;
+  }

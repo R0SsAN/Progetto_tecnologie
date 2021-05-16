@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Centralina V1.0</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../JS/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+
+<body>
+    <div id="container-vue">
+        <h1>Gestione Centralina v1.0</h1>
+        <div class="container-pulsanti">
+
+            <div class="pulsante">
+                <h2>Pulsante 1</h2>
+                <!-- Pulsante -->
+                <div class="btn-bg" @click="btnPremuto(0)">
+                    <div class="btn-highlight"></div>
+                    <div class="btn-ring">
+                        <div class="ring-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pulsante">
+                <h2>Pulsante 2</h2>
+                <!-- Pulsante -->
+                <div class="btn-bg" @click="btnPremuto(1)">
+                    <div class="btn-highlight"></div>
+                    <div class="btn-ring">
+                        <div class="ring-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pulsante">
+                <h2>Pulsante 3</h2>
+                <!-- Pulsante -->
+                <div class="btn-bg" @click="btnPremuto(2)">
+                    <div class="btn-highlight"></div>
+                    <div class="btn-ring">
+                        <div class="ring-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pulsante">
+                <h2>Scena 1</h2>
+                <!-- Pulsante -->
+                <div class="btn-bg" @click="btnPremuto(3)">
+                    <div class="btn-highlight"></div>
+                    <div class="btn-ring">
+                        <div class="ring-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pulsante">
+                <h2>Scena 2</h2>
+                <!-- Pulsante -->
+                <div class="btn-bg" @click="btnPremuto(4)">
+                    <div class="btn-highlight"></div>
+                    <div class="btn-ring">
+                        <div class="ring-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pulsante">
+                <h2>Scena 3</h2>
+                <!-- Pulsante -->
+                <div class="btn-bg" @click="btnPremuto(5)">
+                    <div class="btn-highlight"></div>
+                    <div class="btn-ring">
+                        <div class="ring-line"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous"></script>
+    <script src="../JS/script.js"></script>
+</body>
+
+</html>
