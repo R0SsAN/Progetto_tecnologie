@@ -7,6 +7,7 @@ package progetto_centralina_java;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -165,7 +166,13 @@ public class form_login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String username="";
+        
+        String username=jTextField2.getText().substring(0, 4);
+        for (int i = 0; i < 10; i++) {
+            
+        }
+        JOptionPane.showMessageDialog(null, "Hello World!");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
