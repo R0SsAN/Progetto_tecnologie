@@ -6,6 +6,7 @@
 package progetto_centralina_java;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,6 +44,22 @@ public class Utenti {
            listaUtenti.add(utenteNuovo);
        }
        return presente;
+   }
+   public Utente controllaPresenzaUtente(String username, String password)
+   {
+       for(Utente utente : listaUtenti)
+       {
+           if(utente.getUsername().equals(username))
+           {
+               if(utente.getPassword().equals(password))
+                   return utente;
+               else
+               {
+                   JOptionPane.showMessageDialog(null, "Password sbagliata!");
+               }
+           }
+       }
+       return null;
    }
     
 }
