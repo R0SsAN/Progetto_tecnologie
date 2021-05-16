@@ -60,8 +60,8 @@ public class ThreadGestioneArduino extends Thread {
             }
         } else {
             SimpleDateFormat formatter = new SimpleDateFormat("HH");
-            int oraAccensione = parseInt(formatter.format(listaUtenti.corrente.orarioAccensione));
-            int oraSpegnimento = parseInt(formatter.format(listaUtenti.corrente.orarioSpegnimento));
+            int oraAccensione = listaUtenti.corrente.orarioAccensione;
+            int oraSpegnimento = listaUtenti.corrente.orarioSpegnimento;
             int oraCorrente = parseInt(formatter.format(new Date(System.currentTimeMillis())));
             if (oraCorrente > oraAccensione || oraCorrente < oraSpegnimento){
                 finale += "1-";

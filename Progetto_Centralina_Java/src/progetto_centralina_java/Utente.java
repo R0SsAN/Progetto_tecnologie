@@ -26,8 +26,8 @@ public class Utente {
     //true = sensore | false = ore
     boolean tipoGestioneLuci;
     //ora accensione e spegnimento luci esterne
-    Date orarioAccensione;
-    Date orarioSpegnimento;
+    int orarioAccensione;
+    int orarioSpegnimento;
 
     //temperatura desiderata termostato
     int temperaturaDesiderata;
@@ -56,8 +56,8 @@ public class Utente {
         allarmeAcceso = false;
         pulsanti=new boolean[3];
         tipoGestioneLuci=false;
-        orarioAccensione = new Date();
-        orarioSpegnimento = new Date();
+        orarioAccensione = 0;
+        orarioSpegnimento = 0;
         temperaturaDesiderata=25;
         sistemaSicurezza=false;
         distanzaPredefinita1 = 0;
