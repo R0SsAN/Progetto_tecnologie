@@ -19,6 +19,9 @@ public class Utente {
     //pulsanti digitali
     boolean[] pulsanti;
 
+    //acceso allarme
+    boolean allarmeAcceso;
+    
     //gestione scelta controllo luci esterne
     //true = sensore | false = ore
     boolean tipoGestioneLuci;
@@ -46,17 +49,19 @@ public class Utente {
     //valore sensore luce
     float valoreLuce;
 
-
     public Utente(String username, String password) {
         this.username = username;
         this.password = password;
 
+        allarmeAcceso = false;
         pulsanti=new boolean[3];
         tipoGestioneLuci=false;
         orarioAccensione = new Date();
         orarioSpegnimento = new Date();
         temperaturaDesiderata=25;
         sistemaSicurezza=false;
+        distanzaPredefinita1 = 0;
+        distanzaPredefinita2 = 0;
         distanza1=100.0f;
         distanza2=100.0f;
         temperaturaCorrente=30.0f;
@@ -64,6 +69,9 @@ public class Utente {
     public String getUsername()
     {
         return this.username;
+    }
+    public String getPassword(){
+        return this.password;
     }
 }
 
