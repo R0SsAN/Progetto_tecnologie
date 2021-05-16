@@ -18,8 +18,10 @@ public class form_login extends javax.swing.JFrame {
     /**
      * Creates new form form_login
      */
+    Utenti listaUtenti;
     public form_login() {
         initComponents();
+        listaUtenti=Utenti.getInstance();
     }
 
     /**
@@ -85,6 +87,11 @@ public class form_login extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(240, 240, 240));
         jButton3.setText("Registrati");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,12 +175,31 @@ public class form_login extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String username=jTextField2.getText().substring(0, 4);
-        for (int i = 0; i < 10; i++) {
-            
+        String password=jTextField3.getText().substring(0, 4);
+        Utente utente=listaUtenti.controllaPresenzaUtente(username,password);
+        if(utente==null){
+            JOptionPane.showMessageDialog(null, "Utente non esistente");
+        }else{
+            listaUtenti.corrente=utente;
         }
-        JOptionPane.showMessageDialog(null, "Hello World!");
         
+        form_gestione form=new form_gestione();
+        this.setVisible(false);
+        form.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+          String username=jTextField2.getText().substring(0, 4);
+        String password=jTextField3.getText().substring(0, 4);
+        boolean presente=listaUtenti.aggiungiUtente(username,password);
+        if(presente==true){
+            JOptionPane.showMessageDialog(null, "Utente già esistente");
+        }else{
+            JOptionPane.showMessageDialog(null, "Utente registrato con successo");
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
