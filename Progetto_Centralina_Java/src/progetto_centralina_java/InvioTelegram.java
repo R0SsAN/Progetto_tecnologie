@@ -35,7 +35,8 @@ public class InvioTelegram extends TelegramLongPollingBot {
     }
 
     public void inviaAllarme() {
-        if (utenti.corrente.allarme == 1) {
+        //commento per ricordare allarme
+        if (utenti.corrente.temperaturaDesiderata == 1) {
             SendMessage message = new SendMessage();
             message.setText("ALLARME INTRUSIONE!");
             try {

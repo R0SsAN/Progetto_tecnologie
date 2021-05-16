@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package progetto_centralina_java;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 /**
  *
@@ -27,21 +30,143 @@ public class form_login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(37, 51, 61));
+
+        jTextField2.setBackground(new java.awt.Color(37, 51, 61));
+        jTextField2.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(231, 232, 234));
+        jTextField2.setText("    Username:");
+        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(137, 142, 145), 2, true));
+        jTextField2.setMargin(new java.awt.Insets(2, 20, 2, 2));
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTextField2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jTextField2MouseExited(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(52, 202, 123));
+        jButton1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(240, 240, 240));
+        jButton1.setText("Accedi");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setBackground(new java.awt.Color(37, 51, 61));
+        jTextField3.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(231, 232, 234));
+        jTextField3.setText("    Password:");
+        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(137, 142, 145), 2, true));
+        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTextField3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jTextField3MouseExited(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(52, 202, 123));
+        jButton3.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(240, 240, 240));
+        jButton3.setText("Registrati");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(308, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(295, 295, 295))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(130, Short.MAX_VALUE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(133, 133, 133))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseEntered
+        // TODO add your handling code here:
+        Border border = new LineBorder(new Color(110, 218, 168), 2, true);
+        jTextField2.setBorder(border);
+        if (jTextField2.getText().equals("    Username:")) {
+            jTextField2.setText("    ");
+        }
+    }//GEN-LAST:event_jTextField2MouseEntered
+
+    private void jTextField2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseExited
+        // TODO add your handling code here:
+        Border border = new LineBorder(new Color(137, 142, 135), 2, true);
+        jTextField2.setBorder(border);
+        if (jTextField2.getText().equals("    ")) {
+            jTextField2.setText("    Username:");
+        }
+    }//GEN-LAST:event_jTextField2MouseExited
+
+    private void jTextField3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseEntered
+        // TODO add your handling code here:
+        Border border = new LineBorder(new Color(110, 218, 168), 2, true);
+        jTextField3.setBorder(border);
+        if (jTextField3.getText().equals("    Password:")) {
+            jTextField3.setText("    ");
+        }
+    }//GEN-LAST:event_jTextField3MouseEntered
+
+    private void jTextField3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseExited
+        // TODO add your handling code here:
+        Border border = new LineBorder(new Color(137, 142, 135), 2, true);
+        jTextField3.setBorder(border);
+        if (jTextField3.getText().equals("    ")) {
+            jTextField3.setText("    Password:");
+        }
+    }//GEN-LAST:event_jTextField3MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String username="";
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +204,10 @@ public class form_login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
