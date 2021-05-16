@@ -183,7 +183,7 @@ public class form_login extends javax.swing.JFrame {
             listaUtenti.corrente=utente;
         }
         
-        form_gestione form=new form_gestione();
+        form_porta form=new form_porta();
         this.setVisible(false);
         form.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

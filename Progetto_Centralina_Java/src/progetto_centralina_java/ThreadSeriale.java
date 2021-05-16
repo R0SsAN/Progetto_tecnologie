@@ -25,7 +25,24 @@ public class ThreadSeriale extends Thread {
         portaSeriale = p;
         utenti=Utenti.getInstance();
     }
+    
+    public void setPortaSeriale(SerialPort p){
+        portaSeriale=p;
+    }
+    
+   
 
+    static ThreadSeriale _instance=null;
+    static synchronized public ThreadSeriale getInstance(SerialPort p)
+    {
+        if(_instance==null)
+            _instance=new ThreadSeriale(p);
+        return _instance;
+    }
+    static synchronized public ThreadSeriale getInstance()
+    {
+        return _instance;
+    }
     
     public void run() {
         Scanner scanner = new Scanner(portaSeriale.getInputStream());
