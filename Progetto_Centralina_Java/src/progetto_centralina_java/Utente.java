@@ -5,6 +5,7 @@
  */
 package progetto_centralina_java;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -39,12 +40,12 @@ public class Utente {
     boolean sistemaSicurezza;
 
     //distanze target sensori 
-    float distanzaPredefinita1;
-    float distanzaPredefinita2;
+    int distanzaPredefinita1;
+    int distanzaPredefinita2;
 
     //distanze sensori
-    float distanza1;
-    float distanza2;
+    int distanza1;
+    int distanza2;
 
     //temperatura corrente
     float temperaturaCorrente;
@@ -57,8 +58,11 @@ public class Utente {
         this.password = password;
 
         allarmeAcceso = false;
-        pulsanti=new boolean[3];
+        pulsanti=new boolean[6];
         scene = new Scena[3];
+        for (int i = 0; i < scene.length; i++) {
+            scene[i]=new Scena();
+        }
         tipoGestioneLuci=false;
         orarioAccensione = 0;
         orarioSpegnimento = 0;
@@ -66,21 +70,21 @@ public class Utente {
         sistemaSicurezza=false;
         distanzaPredefinita1 = 0;
         distanzaPredefinita2 = 0;
-        distanza1=100.0f;
-        distanza2=100.0f;
+        distanza1=100;
+        distanza2=100;
         temperaturaCorrente=30.0f;
     }
 
     public Utente(String stringa) {
-        this.pulsanti = new boolean[3];
+        this.pulsanti = new boolean[6];
         this.scene = new Scena[3];
         
         String[] sx = stringa.split("-");
         this.username = sx[0];
         this.password = sx[1];
-        String[] dx = sx[2].split("|");
+        String[] dx = sx[2].split("&");
         for (int i = 0; i < dx.length; i++) {
-            pulsanti[i] = (dx[i] == "1");
+            pulsanti[i] = (Integer.parseInt(dx[i]) == 1);  
         }
         this.allarmeAcceso = (sx[3] == "1");
         this.tipoGestioneLuci = (sx[4] == "1");
@@ -91,26 +95,41 @@ public class Utente {
         this.distanzaPredefinita1 = Integer.parseInt(sx[9]);
         this.distanzaPredefinita2 = Integer.parseInt(sx[10]);
         
-        dx = sx[11].split("|");
-        int[] v = new int[dx.length];
-        for (int i = 0; i < v.length; i++) {
-            v[i] = Integer.parseInt(dx[i]);
+        dx = sx[11].split("&");
+        ArrayList<Integer> v=new ArrayList<Integer>();
+        if(dx.length>1)
+        {
+            for (int i = 0; i < dx.length; i++) {
+                v.add(Integer.parseInt(dx[i]));
+            }
+            scene[0] = new Scena(v);
         }
-        scene[0] = new Scena(v);
+        else
+            scene[0]=new Scena();
         
-        dx = sx[12].split("|");
-        v = new int[dx.length];
-        for (int i = 0; i < v.length; i++) {
-            v[i] = Integer.parseInt(dx[i]);
+        dx = sx[12].split("&");
+        v = new ArrayList<Integer>();
+        if(dx.length>1)
+        {
+            for (int i = 0; i < dx.length; i++) {
+                v.add(Integer.parseInt(dx[i]));
+            }
+            scene[1] = new Scena(v);
         }
-        scene[1] = new Scena(v);
+        else
+            scene[1]=new Scena();
         
-        dx = sx[13].split("|");
-        v = new int[dx.length];
-        for (int i = 0; i < v.length; i++) {
-            v[i] = Integer.parseInt(dx[i]);
+        dx = sx[13].split("&");
+        v = new ArrayList<Integer>();
+        if(dx.length>1)
+        {
+            for (int i = 0; i < dx.length; i++) {
+                v.add(Integer.parseInt(dx[i]));
+            }
+            scene[2] = new Scena(v);
         }
-        scene[2] = new Scena(v);
+        else
+            scene[2] = new Scena();
     }
     
     public String getUsername()
@@ -123,7 +142,7 @@ public class Utente {
 
     @Override
     public String toString() {
-        return username + "-" + password + "-" + (pulsanti[0] ? 1 : 0) + "|" + (pulsanti[1] ? 1 : 0) + "|" + (pulsanti[2] ? 1 : 0) + "-" + (allarmeAcceso ? 1 : 0) + "-" + (tipoGestioneLuci ? 1 : 0) + "-" + orarioAccensione + 
+        return username + "-" + password + "-" + (pulsanti[0] ? 1 : 0) + "&" + (pulsanti[1] ? 1 : 0) + "&" + (pulsanti[2] ? 1 : 0) + "&" + (pulsanti[3] ? 1 : 0) + "&" + (pulsanti[4] ? 1 : 0) + "&" + (pulsanti[5] ? 1 : 0) + "-" + (allarmeAcceso ? 1 : 0) + "-" + (tipoGestioneLuci ? 1 : 0) + "-" + orarioAccensione + 
                 "-" + orarioSpegnimento + "-" + temperaturaDesiderata + "-" + (sistemaSicurezza ? 1 : 0) + "-" + distanzaPredefinita1 + "-" + distanzaPredefinita2 + "-" + scene[0].toString() + 
                 "-" + scene[1].toString() + "-" + scene[2].toString() + ";"; 
     }

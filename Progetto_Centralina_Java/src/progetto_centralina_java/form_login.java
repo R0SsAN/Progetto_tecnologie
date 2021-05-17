@@ -22,6 +22,7 @@ public class form_login extends javax.swing.JFrame {
     public form_login() {
         initComponents();
         listaUtenti=Utenti.getInstance();
+        listaUtenti.caricaUtenti();
     }
 
     /**
@@ -174,30 +175,32 @@ public class form_login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        String username=jTextField2.getText().substring(0, 4);
-        String password=jTextField3.getText().substring(0, 4);
+        String username=jTextField2.getText().substring(4);
+        String password=jTextField3.getText().substring(4);
         Utente utente=listaUtenti.controllaPresenzaUtente(username,password);
         if(utente==null){
             JOptionPane.showMessageDialog(null, "Utente non esistente");
-        }else{
-            listaUtenti.corrente=utente;
         }
-        
-        form_porta form=new form_porta();
-        this.setVisible(false);
-        form.setVisible(true);
+        else if(utente.getUsername()!="")
+        {
+            listaUtenti.corrente=utente;
+            form_porta form=new form_porta();
+            this.setVisible(false);
+            form.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-          String username=jTextField2.getText().substring(0, 4);
-        String password=jTextField3.getText().substring(0, 4);
+        String username=jTextField2.getText().substring(4);
+        String password=jTextField3.getText().substring(4);
         boolean presente=listaUtenti.aggiungiUtente(username,password);
         if(presente==true){
             JOptionPane.showMessageDialog(null, "Utente già esistente");
         }else{
             JOptionPane.showMessageDialog(null, "Utente registrato con successo");
         }
+        listaUtenti.SalvaUtenti();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 

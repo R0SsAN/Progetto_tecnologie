@@ -17,6 +17,9 @@ public class Scena {
     public Scena() {
         pulsantiComandati=new ArrayList<Integer>();
     }
+    public Scena(ArrayList<Integer> array){
+        this.pulsantiComandati=array;
+    }
     public void aggiungiComandato(int comandato)
     {
         pulsantiComandati.add(comandato);
@@ -26,9 +29,12 @@ public class Scena {
     public String toString() {
         String finale = "";
         for (int i = 0; i < pulsantiComandati.size(); i++) {
-            finale += pulsantiComandati.get(i) + "|";
+            finale += pulsantiComandati.get(i) + "&";
         }
-        finale = finale.substring(0, finale.length() - 1);
+        if(finale.length()>0)
+        {
+            finale = finale.substring(0, finale.length() - 1);
+        }
         return finale;
     }
     

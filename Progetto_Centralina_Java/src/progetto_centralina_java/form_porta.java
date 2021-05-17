@@ -16,6 +16,7 @@ public class form_porta extends javax.swing.JFrame {
     /**
      * Creates new form form_porta
      */
+    ThreadSeriale tSeriale;
     SerialPort[] porte= SerialPort.getCommPorts();
     public form_porta() {
         initComponents();
@@ -111,8 +112,8 @@ public class form_porta extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ThreadSeriale.getInstance().setPortaSeriale(porte[jComboBox1.getSelectedIndex()]);
-         form_gestione form=new form_gestione();
+        tSeriale=ThreadSeriale.getInstance(porte[jComboBox1.getSelectedIndex()]);
+        form_gestione form=new form_gestione();
         this.setVisible(false);
         form.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed

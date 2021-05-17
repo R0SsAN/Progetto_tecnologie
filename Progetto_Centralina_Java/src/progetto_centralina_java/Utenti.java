@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class Utenti {
     //lista di utenti
     private ArrayList<Utente> listaUtenti;
-    private final String pathFile = "utenti.txt";
+    private final String pathFile = "listautenti.txt";
     //utente attivo in questo momento
     public Utente corrente;
     
@@ -64,6 +64,7 @@ public class Utenti {
                else
                {
                    JOptionPane.showMessageDialog(null, "Password sbagliata!");
+                   return new Utente("","");
                }
            }
        }

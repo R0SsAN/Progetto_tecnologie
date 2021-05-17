@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,17 +32,21 @@ public class ThreadRichieste extends Thread{
     @Override
     public void run() 
     {
-        try {
-            riceviUpdate();
-        } catch (IOException ex) {
-            Logger.getLogger(ThreadRichieste.class.getName()).log(Level.SEVERE, null, ex);
+        while(true)
+        {
+            try {
+                riceviUpdate();
+            } catch (IOException ex) {
+                Logger.getLogger(ThreadRichieste.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try {
+                Thread.sleep(2500);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ThreadRichieste.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
-        try {
-            Thread.sleep(2500);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ThreadRichieste.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     public void riceviUpdate() throws MalformedURLException, IOException
     {
@@ -63,30 +68,16 @@ public class ThreadRichieste extends Thread{
     }
     public void inviaRichiesta(String azione, String data) throws IOException
     {
-        URL url = new URL("http://194.87.139.81/api/updates.php"+azione+data);
+        URL url = new URL("http://194.87.139.81/api/updates.php"+azione+Base64.getEncoder().encodeToString(data.getBytes()));
+        System.out.println(url.toString());
         InputStream is = url.openStream();
+        System.out.println("inviato");
         is.close();
     }
     public void aggiornaUtente(Messaggio messaggio)
     {
         for (int i = 0; i < messaggio.bottoni.size(); i++) {
             listaUtenti.corrente.pulsanti[i]=(boolean)messaggio.bottoni.get(i);
-        }
-    }
-
-    public class Messaggio{
-        List bottoni=new ArrayList<>();
-        List scene=new ArrayList<>();
-
-        public Messaggio() {
-        }
-
-        public void setBottoni(List bottoni) {
-            this.bottoni = bottoni;
-        }
-
-        public void setScene(List scene) {
-            this.scene = scene;
         }
     }
     
