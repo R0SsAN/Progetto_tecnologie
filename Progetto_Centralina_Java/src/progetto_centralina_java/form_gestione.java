@@ -11,7 +11,6 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.lang.Integer;
 import static java.lang.Integer.parseInt;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,12 +24,18 @@ public class form_gestione extends javax.swing.JFrame {
     Utenti listaUtenti;
     ThreadSeriale tSeriale;
     ThreadGestioneArduino tGestione;
+    ThreadRichieste tRichieste;
     public form_gestione() {
         initComponents();
         listaUtenti=Utenti.getInstance();
         tSeriale=ThreadSeriale.getInstance();
+        tRichieste=new ThreadRichieste();
         //tGestione=ThreadGestioneArduino.getInstance();
         
+        
+        tSeriale.start();
+        tGestione.start();
+        tRichieste.start();
     }
 
     /**
