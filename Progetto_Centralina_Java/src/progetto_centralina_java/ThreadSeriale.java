@@ -6,6 +6,8 @@
 package progetto_centralina_java;
 
 import com.fazecast.jSerialComm.SerialPort;
+import java.io.IOException;
+import java.io.OutputStream;
 import static java.lang.Integer.parseInt;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -63,6 +65,16 @@ public class ThreadSeriale extends Thread {
             } catch (InterruptedException ex) {
                 Logger.getLogger(ThreadSeriale.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+    }
+    public void inviaSeriale(String stringa)
+    {
+        OutputStream prova;
+        prova=portaSeriale.getOutputStream();
+        try {
+            prova.write(stringa.getBytes());
+        } catch (IOException ex) {
+            Logger.getLogger(ThreadSeriale.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

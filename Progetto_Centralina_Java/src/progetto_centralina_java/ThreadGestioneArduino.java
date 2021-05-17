@@ -16,6 +16,7 @@ import java.util.Date;
 public class ThreadGestioneArduino extends Thread {
     boolean connessioneSeriale;
     Utenti listaUtenti;
+    ThreadSeriale tSeriale;
     
     
     //genera le stringhe in base alle variabili dell'utente e alle informazioni ricevute dagli arduini
@@ -24,6 +25,7 @@ public class ThreadGestioneArduino extends Thread {
     public ThreadGestioneArduino() {
         connessioneSeriale = false;
         listaUtenti = Utenti.getInstance();
+        tSeriale=ThreadSeriale.getInstance();
     }
     
     public void LogIn(){
@@ -38,8 +40,8 @@ public class ThreadGestioneArduino extends Thread {
     @Override
     public void run(){
         while (connessioneSeriale){
-            generaStringaArduino();
-            inviaStringaArduino(); 
+            String s=generaStringaArduino();
+            inviaStringaArduino(s); 
         }
     }
 
@@ -88,7 +90,7 @@ public class ThreadGestioneArduino extends Thread {
         return finale+";";
     }
 
-    public void inviaStringaArduino() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void inviaStringaArduino(String s) {
+        tSeriale.inviaSeriale(s);
     }
 }
