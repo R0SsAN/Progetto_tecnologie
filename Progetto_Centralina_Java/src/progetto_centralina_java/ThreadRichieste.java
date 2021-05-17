@@ -16,6 +16,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import org.apache.commons.io.IOUtils;
 
 /**
@@ -24,9 +25,14 @@ import org.apache.commons.io.IOUtils;
  */
 public class ThreadRichieste extends Thread{
     Utenti listaUtenti;
+    form_gestione frame;
 
     public ThreadRichieste() {
         listaUtenti=Utenti.getInstance();
+    }
+    public ThreadRichieste(form_gestione frame) {
+        listaUtenti=Utenti.getInstance();
+        this.frame=frame;
     }
 
     @Override
@@ -79,6 +85,7 @@ public class ThreadRichieste extends Thread{
         for (int i = 0; i < messaggio.bottoni.size(); i++) {
             listaUtenti.corrente.pulsanti[i]=(boolean)messaggio.bottoni.get(i);
         }
+        frame.aggiornaInterfaccia();
     }
     
 }

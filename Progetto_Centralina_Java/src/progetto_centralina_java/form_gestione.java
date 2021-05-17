@@ -33,13 +33,41 @@ public class form_gestione extends javax.swing.JFrame {
         initComponents();
         listaUtenti = Utenti.getInstance();
         tSeriale = ThreadSeriale.getInstance();
-        tRichieste = new ThreadRichieste();
+        tRichieste = new ThreadRichieste(this);
         tGestione=new ThreadGestioneArduino();
 
         tSeriale.start();
         //tGestione.start();
         tRichieste.start();
         //tGestione.LogIn();
+    }
+    public void aggiornaInterfaccia()
+    {
+        if(listaUtenti.corrente.pulsanti[0])
+            jButton2.setText("Spegni");
+        else
+            jButton2.setText("Accendi");
+        if(listaUtenti.corrente.pulsanti[1])
+            jButton3.setText("Spegni");
+        else
+            jButton3.setText("Accendi");
+        if(listaUtenti.corrente.pulsanti[2])
+            jButton4.setText("Spegni");
+        else
+            jButton4.setText("Accendi");
+        if(listaUtenti.corrente.pulsanti[3])
+            jButton5.setText("Spegni");
+        else
+            jButton5.setText("Accendi");
+        if(listaUtenti.corrente.pulsanti[4])
+            jButton6.setText("Spegni");
+        else
+            jButton6.setText("Accendi");
+        if(listaUtenti.corrente.pulsanti[5])
+            jButton7.setText("Spegni");
+        else
+            jButton7.setText("Accendi");
+            
     }
 
     /**
