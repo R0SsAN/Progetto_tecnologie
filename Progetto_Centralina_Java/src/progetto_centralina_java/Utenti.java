@@ -7,7 +7,14 @@ package progetto_centralina_java;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Andrea
@@ -15,6 +22,7 @@ import javax.swing.JOptionPane;
 public class Utenti {
     //lista di utenti
     private ArrayList<Utente> listaUtenti;
+    private final String pathFile = "utenti.txt";
     //utente attivo in questo momento
     public Utente corrente;
     
@@ -61,5 +69,40 @@ public class Utenti {
        }
        return null;
    }
-    
+    public void SalvaUtenti(){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathFile))){
+            for (Utente utente : listaUtenti) {
+                bw.append(utente.toString());
+                bw.newLine();
+            }
+            bw.flush();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Impossibile salvare!");
+        }
+    }
+    public void caricaUtenti(){
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(pathFile));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Utenti.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "File "+pathFile+" non trovato!");
+        }
+        String text = null;
+        try {
+            while ((text = br.readLine()) != null){
+                listaUtenti.add(new Utente(text));
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Utenti.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Errore nel caricamento del file!");
+        }
+        
+        try {
+            br.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Utenti.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Errore nella chiusura del file!");
+        }
+    }
 }

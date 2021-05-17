@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package progetto_centralina_java;
-
 /**
  *
  * @author Luca
@@ -19,6 +18,11 @@ public class Scena {
         attiva=false;
         pulsantiComandati=null;
     }
+    public Scena(int[] pulsantiComandati){
+        //nome = "";
+        attiva = false;
+        this.pulsantiComandati = pulsantiComandati;
+    }
     void creaScena(String nome, int[] pulsantiComandati)
     {
         this.nome=nome;
@@ -31,4 +35,15 @@ public class Scena {
         attiva=false;
         pulsantiComandati=null;
     }
+
+    @Override
+    public String toString() {
+        String finale = "";
+        for (int i = 0; i < pulsantiComandati.length; i++) {
+            finale += pulsantiComandati[i] + "|";
+        }
+        finale = finale.substring(0, finale.length() - 1);
+        return finale;
+    }
+    
 }
