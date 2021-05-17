@@ -4,43 +4,29 @@
  * and open the template in the editor.
  */
 package progetto_centralina_java;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Luca
  */
 public class Scena {
-    String nome;
-    boolean attiva;
-    int[] pulsantiComandati;
+    ArrayList<Integer> pulsantiComandati;
 
     public Scena() {
-        nome="";
-        attiva=false;
-        pulsantiComandati=null;
+        pulsantiComandati=new ArrayList<Integer>();
     }
-    public Scena(int[] pulsantiComandati){
-        //nome = "";
-        attiva = false;
-        this.pulsantiComandati = pulsantiComandati;
-    }
-    void creaScena(String nome, int[] pulsantiComandati)
+    public void aggiungiComandato(int comandato)
     {
-        this.nome=nome;
-        this.pulsantiComandati=pulsantiComandati;
-        attiva=true;
-    }
-    void eliminaScena()
-    {
-        nome="";
-        attiva=false;
-        pulsantiComandati=null;
+        pulsantiComandati.add(comandato);
     }
 
     @Override
     public String toString() {
         String finale = "";
-        for (int i = 0; i < pulsantiComandati.length; i++) {
-            finale += pulsantiComandati[i] + "|";
+        for (int i = 0; i < pulsantiComandati.size(); i++) {
+            finale += pulsantiComandati.get(i) + "|";
         }
         finale = finale.substring(0, finale.length() - 1);
         return finale;
