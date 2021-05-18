@@ -3,6 +3,8 @@
 #define echo2 6
 #define trigger2 5
 #define buzzer 2
+int distanza1 = 0;
+int distanza2 = 0;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -11,8 +13,7 @@ void setup() {
   pinMode(echo1, INPUT);
   pinMode(echo2, INPUT);
 }
-int distanza1 = 0;
-int distanza2 = 0;
+
 void loop() {
   // put your main code here, to run repeatedly:
   int suonaBuzzer = leggiFino(';');
@@ -22,18 +23,18 @@ void loop() {
     noTone(buzzer);
   }
   calcolaDistanza();
-  Serial.print(distanza1 + "-" + distanza2 + ";");
+  String s=String(distanza1) + "-" + String(distanza2) + ";";
+  Serial.print(s);
 }
 void calcolaDistanza()
 {
-  long durata=0;
+  long durata;
   digitalWrite(trigger1,LOW);
   digitalWrite(trigger1,HIGH);
   delayMicroseconds(10);
   digitalWrite(trigger1,LOW);
   durata=pulseIn(echo1,HIGH);
   distanza1=(int)durata/58.31;
-  durata=0;
   digitalWrite(trigger2,LOW);
   digitalWrite(trigger2,HIGH);
   delayMicroseconds(10);
@@ -48,7 +49,7 @@ int leggiFino(char terminatore)
   {
     if(Serial.available()>0)
     {
-      char c=Serial.read();
+      char c=(char)Serial.read();
       if(c==terminatore)
         return temp.toInt();
       else
