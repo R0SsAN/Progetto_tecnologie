@@ -879,7 +879,7 @@ public class form_gestione extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(jTextField2.getText()!="  ")
+        if(jTextField2.getText().length()!=0)
             listaUtenti.corrente.temperaturaDesiderata = parseInt(jTextField2.getText().substring(2));
         listaUtenti.corrente.orarioAccensione = jSlider1.getValue();
         listaUtenti.corrente.orarioSpegnimento = jSlider2.getValue();
@@ -890,8 +890,6 @@ public class form_gestione extends javax.swing.JFrame {
         } else {
             listaUtenti.corrente.tipoGestioneLuci = false;
         }
-
-        System.out.println("prova");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed

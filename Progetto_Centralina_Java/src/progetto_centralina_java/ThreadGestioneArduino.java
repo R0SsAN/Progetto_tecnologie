@@ -11,6 +11,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.TelegramBotsApi;
+import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 /**
  *
  * @author Lorenzo
@@ -29,7 +32,16 @@ public class ThreadGestioneArduino extends Thread {
         connessioneSeriale = false;
         listaUtenti = Utenti.getInstance();
         tSeriale=ThreadSeriale.getInstance();
-        telegram=new InvioTelegram();
+        
+        ApiContextInitializer.init();
+        TelegramBotsApi api = new TelegramBotsApi();
+        try {
+            api.registerBot(new InvioTelegram());
+        } catch (TelegramApiRequestException e) {
+        	// gestione errore in registrazione
+        }
+        telegram=InvioTelegram.getInstance();
+        
     }
     
     public void LogIn(){
@@ -101,7 +113,6 @@ public class ThreadGestioneArduino extends Thread {
         }
         else
             finale += "0";
-        listaUtenti.ultima=finale;
         return finale+";";
     }
 

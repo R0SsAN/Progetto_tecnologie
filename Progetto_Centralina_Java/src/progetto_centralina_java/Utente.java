@@ -66,7 +66,7 @@ public class Utente {
         tipoGestioneLuci=true;
         orarioAccensione = 0;
         orarioSpegnimento = 0;
-        temperaturaDesiderata=25;
+        temperaturaDesiderata=20;
         sistemaSicurezza=false;
         distanzaPredefinita1 = 0;
         distanzaPredefinita2 = 0;

@@ -5,6 +5,7 @@
  */
 package progetto_centralina_java;
 
+import com.fazecast.jSerialComm.SerialPort;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -30,14 +31,21 @@ public class InvioTelegram extends TelegramLongPollingBot {
     private final String pathFile= "listaChat.txt";
     ArrayList<Long> listaChat;
 
+    static InvioTelegram _instance=null;
+    static synchronized public InvioTelegram getInstance()
+    {
+        return _instance;
+    }
+    
     public InvioTelegram() {
+        _instance=this;
         utenti = Utenti.getInstance();
         listaChat=new ArrayList<Long>();
-        //caricaChat();
+        caricaChat();
     }
 
     public String getBotUsername() {
-        return "Invio Telegram";
+        return "Echo Bot";
     }
 
     @Override
@@ -45,7 +53,12 @@ public class InvioTelegram extends TelegramLongPollingBot {
         // inserire qui il proprio token
         return "1846536624:AAGq7nZ-MVRoto4WGTfWxB01DfP56giKz5w";
     }
-
+    
+    @Override
+    public void onUpdateReceived(Update update) {
+        listaChat.add(update.getMessage().getChatId());
+        salvaChat();
+    }
     public void inviaAllarme() {
         //commento per ricordare allarme
         for (int i = 0; i < listaChat.size(); i++) {
@@ -58,10 +71,6 @@ public class InvioTelegram extends TelegramLongPollingBot {
             }
         }
         
-    }
-    @Override
-    public void onUpdateReceived(Update update) {
-        listaChat.add(update.getMessage().getChatId());
     }
     public void caricaChat()
     {
