@@ -1173,6 +1173,13 @@ public class form_gestione extends javax.swing.JFrame {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        for (int i = 0; i < listaUtenti.corrente.scene.length; i++) {
+            try {
+                tRichieste.inviaRichiesta("?action=set_scene&data=", Integer.toString(i) + "|false");
+            } catch (IOException ex) {
+                Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_formWindowClosing
 
     private void jCheckBoxMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1MousePressed

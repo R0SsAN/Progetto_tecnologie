@@ -3,12 +3,25 @@
 }
 body{
     background-color: rgb(33, 34, 34);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding:0;
+    margin:0;
 }
+
 h1{
     text-align: center;
     color:white;
     font-weight: bold;
     font-size: 35px;
+    float:left;
+    margin-top:75px;
+}
+.center{
+  margin-top:-2;
+  float:left;
+  margin-left:37%;
 }
 .container-vue{
     width:100%;
@@ -16,6 +29,7 @@ h1{
 }
 .container-pulsanti{
     margin:auto;
+    margin-bottom:80px;
     background-color: rgb(37,51,61);
     border-radius: 30px;
     width:80%;
@@ -104,3 +118,26 @@ h2{
     border-right: 3px solid #52555d;
     border-left: 3px solid #2d3036;
   }
+  footer{
+    margin-top: auto;
+    overflow:hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color:#1c286d;
+    color:#e7e7e7;
+    font-family:Tahoma;
+}
+footer .social {
+    text-align:center;
+    padding-bottom:15px;
+}
+footer .social > a:hover {
+    opacity:0.6;
+}
+footer .copyright {
+    margin-top:7px;
+    text-align:center;
+    font-size:15px;
+    color:#aaa;
+    margin-bottom:0;
+}

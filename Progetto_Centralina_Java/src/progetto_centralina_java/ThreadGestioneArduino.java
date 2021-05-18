@@ -102,7 +102,8 @@ public class ThreadGestioneArduino extends Thread {
         //buzzer
         if(listaUtenti.corrente.allarmeAcceso)
         {
-            if (listaUtenti.corrente.distanza1 < listaUtenti.corrente.distanzaPredefinita1 || listaUtenti.corrente.distanza2 < listaUtenti.corrente.distanzaPredefinita2){
+            if (listaUtenti.corrente.distanza1 < listaUtenti.corrente.distanzaPredefinita1 
+                    || listaUtenti.corrente.distanza2 < listaUtenti.corrente.distanzaPredefinita2){
                 finale += "1";
                 listaUtenti.corrente.allarmeAcceso = true;
                 telegram.inviaAllarme();
