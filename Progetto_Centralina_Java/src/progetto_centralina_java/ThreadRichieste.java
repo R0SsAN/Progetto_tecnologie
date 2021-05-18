@@ -84,6 +84,15 @@ public class ThreadRichieste extends Thread{
         for (int i = 0; i < messaggio.bottoni.size(); i++) {
             listaUtenti.corrente.pulsanti[i]=(boolean)messaggio.bottoni.get(i);
         }
+        for (int i = 0; i < listaUtenti.corrente.scene.length; i++) {
+            for (int j = 0; j < listaUtenti.corrente.scene[i].pulsantiComandati.size(); j++) {
+                if(listaUtenti.corrente.pulsanti[i+3]==true)
+                    listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[i].pulsantiComandati.get(j)]=true;
+                else
+                    listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[i].pulsantiComandati.get(j)]=false;
+            }
+            
+        }
         frame.aggiornaInterfaccia();
     }
     
