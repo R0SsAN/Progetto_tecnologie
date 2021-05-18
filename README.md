@@ -25,7 +25,7 @@ dal software.
 Si ha anche la possibilitò di attivare i bottoni
 dei relè e delle scene direttamente dal nostro sito.
 
-[CodeTime](http://domobox.joshyclient.xyz/)
+[DomoBox's Site](http://domobox.joshyclient.xyz/)
 
 [Download](http://download.domobox.joshyclient.xyz/)
 
