@@ -29,45 +29,58 @@ public class form_gestione extends javax.swing.JFrame {
     ThreadGestioneArduino tGestione;
     ThreadRichieste tRichieste;
 
+    boolean[] check;
+    boolean[] check2;
+    boolean[] check3;
+
     public form_gestione() {
         initComponents();
         listaUtenti = Utenti.getInstance();
         tSeriale = ThreadSeriale.getInstance();
         tRichieste = new ThreadRichieste(this);
-        tGestione=new ThreadGestioneArduino();
+        tGestione = new ThreadGestioneArduino();
+        check = new boolean[3];
+        check2 = new boolean[3];
+        check3 = new boolean[3];
 
         tSeriale.start();
-        //tGestione.start();
+        tGestione.start();
         tRichieste.start();
-        //tGestione.LogIn();
+        tGestione.LogIn();
     }
-    public void aggiornaInterfaccia()
-    {
-        if(listaUtenti.corrente.pulsanti[0])
+
+    public void aggiornaInterfaccia() {
+        if (listaUtenti.corrente.pulsanti[0]) {
             jButton2.setText("Spegni");
-        else
+        } else {
             jButton2.setText("Accendi");
-        if(listaUtenti.corrente.pulsanti[1])
+        }
+        if (listaUtenti.corrente.pulsanti[1]) {
             jButton3.setText("Spegni");
-        else
+        } else {
             jButton3.setText("Accendi");
-        if(listaUtenti.corrente.pulsanti[2])
+        }
+        if (listaUtenti.corrente.pulsanti[2]) {
             jButton4.setText("Spegni");
-        else
+        } else {
             jButton4.setText("Accendi");
-        if(listaUtenti.corrente.pulsanti[3])
+        }
+        if (listaUtenti.corrente.pulsanti[3]) {
             jButton5.setText("Spegni");
-        else
+        } else {
             jButton5.setText("Accendi");
-        if(listaUtenti.corrente.pulsanti[4])
+        }
+        if (listaUtenti.corrente.pulsanti[4]) {
             jButton6.setText("Spegni");
-        else
+        } else {
             jButton6.setText("Accendi");
-        if(listaUtenti.corrente.pulsanti[5])
+        }
+        if (listaUtenti.corrente.pulsanti[5]) {
             jButton7.setText("Spegni");
-        else
+        } else {
             jButton7.setText("Accendi");
-            
+        }
+
     }
 
     /**
@@ -146,12 +159,27 @@ public class form_gestione extends javax.swing.JFrame {
         });
 
         jCheckBoxMenuItem1.setText("Bottone 1");
+        jCheckBoxMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBoxMenuItem1MousePressed(evt);
+            }
+        });
         jPopupMenu1.add(jCheckBoxMenuItem1);
 
         jCheckBoxMenuItem2.setText("Bottone2");
+        jCheckBoxMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBoxMenuItem2MousePressed(evt);
+            }
+        });
         jPopupMenu1.add(jCheckBoxMenuItem2);
 
         jCheckBoxMenuItem3.setText("Bottone3");
+        jCheckBoxMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBoxMenuItem3MousePressed(evt);
+            }
+        });
         jPopupMenu1.add(jCheckBoxMenuItem3);
 
         jPopupMenu2.setAlignmentX(50.0F);
@@ -166,12 +194,27 @@ public class form_gestione extends javax.swing.JFrame {
         });
 
         jCheckBoxMenuItem4.setText("Bottone 1");
+        jCheckBoxMenuItem4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBoxMenuItem4MousePressed(evt);
+            }
+        });
         jPopupMenu2.add(jCheckBoxMenuItem4);
 
         jCheckBoxMenuItem5.setText("Bottone2");
+        jCheckBoxMenuItem5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBoxMenuItem5MousePressed(evt);
+            }
+        });
         jPopupMenu2.add(jCheckBoxMenuItem5);
 
         jCheckBoxMenuItem6.setText("Bottone3");
+        jCheckBoxMenuItem6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBoxMenuItem6MousePressed(evt);
+            }
+        });
         jPopupMenu2.add(jCheckBoxMenuItem6);
 
         jPopupMenu3.setAlignmentX(50.0F);
@@ -186,12 +229,27 @@ public class form_gestione extends javax.swing.JFrame {
         });
 
         jCheckBoxMenuItem7.setText("Bottone 1");
+        jCheckBoxMenuItem7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBoxMenuItem7MousePressed(evt);
+            }
+        });
         jPopupMenu3.add(jCheckBoxMenuItem7);
 
         jCheckBoxMenuItem8.setText("Bottone2");
+        jCheckBoxMenuItem8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBoxMenuItem8MousePressed(evt);
+            }
+        });
         jPopupMenu3.add(jCheckBoxMenuItem8);
 
         jCheckBoxMenuItem9.setText("Bottone3");
+        jCheckBoxMenuItem9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBoxMenuItem9MousePressed(evt);
+            }
+        });
         jPopupMenu3.add(jCheckBoxMenuItem9);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -274,7 +332,7 @@ public class form_gestione extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -397,7 +455,7 @@ public class form_gestione extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -445,7 +503,7 @@ public class form_gestione extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -792,38 +850,36 @@ public class form_gestione extends javax.swing.JFrame {
     private void jPopupMenu1PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jPopupMenu1PopupMenuWillBecomeInvisible
         // TODO add your handling code here:
         listaUtenti.corrente.scene[0] = new Scena();
-        if (jCheckBoxMenuItem1.isSelected()) {
+        if (check[0]) {
             listaUtenti.corrente.scene[0].aggiungiComandato(0);
         }
-        if (jCheckBoxMenuItem2.isSelected()) {
+        if (check[1]) {
             listaUtenti.corrente.scene[0].aggiungiComandato(1);
         }
-        if (jCheckBoxMenuItem3.isSelected()) {
+        if (check[2]) {
             listaUtenti.corrente.scene[0].aggiungiComandato(2);
         }
 
-        if (listaUtenti.corrente.scene[0].pulsantiComandati.size() > 0)
-        {
+        if (listaUtenti.corrente.scene[0].pulsantiComandati.size() > 0) {
             try {
                 tRichieste.inviaRichiesta("?action=set_scene&data=", "0|true");
             } catch (IOException ex) {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }  
-        else
-        {
-            try {    
+            listaUtenti.corrente.scene[0].attiva = true;
+        } else {
+            try {
                 tRichieste.inviaRichiesta("?action=set_scene&data=", "0|false");
             } catch (IOException ex) {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-            
+
     }//GEN-LAST:event_jPopupMenu1PopupMenuWillBecomeInvisible
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        listaUtenti.corrente.temperaturaDesiderata = parseInt(jTextField2.getText());
+        listaUtenti.corrente.temperaturaDesiderata = parseInt(jTextField2.getText().substring(2));
         listaUtenti.corrente.orarioAccensione = jSlider1.getValue();
         listaUtenti.corrente.orarioSpegnimento = jSlider2.getValue();
         listaUtenti.corrente.distanza1 = jSlider3.getValue();
@@ -834,7 +890,7 @@ public class form_gestione extends javax.swing.JFrame {
             listaUtenti.corrente.tipoGestioneLuci = false;
         }
 
-
+        System.out.println("prova");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -867,13 +923,13 @@ public class form_gestione extends javax.swing.JFrame {
     private void jPopupMenu2PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jPopupMenu2PopupMenuWillBecomeInvisible
         // TODO add your handling code here:
         listaUtenti.corrente.scene[1] = new Scena();
-        if (jCheckBoxMenuItem1.isSelected()) {
+        if (check2[0]) {
             listaUtenti.corrente.scene[1].aggiungiComandato(0);
         }
-        if (jCheckBoxMenuItem2.isSelected()) {
+        if (check2[1]) {
             listaUtenti.corrente.scene[1].aggiungiComandato(1);
         }
-        if (jCheckBoxMenuItem3.isSelected()) {
+        if (check2[2]) {
             listaUtenti.corrente.scene[1].aggiungiComandato(2);
         }
 
@@ -883,12 +939,14 @@ public class form_gestione extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
+            listaUtenti.corrente.scene[1].attiva = true;
         } else {
             try {
                 tRichieste.inviaRichiesta("?action=set_scene&data=", "1|false");
             } catch (IOException ex) {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
+            listaUtenti.corrente.scene[1].attiva = false;
         }
 
     }//GEN-LAST:event_jPopupMenu2PopupMenuWillBecomeInvisible
@@ -896,13 +954,13 @@ public class form_gestione extends javax.swing.JFrame {
     private void jPopupMenu3PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jPopupMenu3PopupMenuWillBecomeInvisible
         // TODO add your handling code here:
         listaUtenti.corrente.scene[2] = new Scena();
-        if (jCheckBoxMenuItem1.isSelected()) {
+        if (check3[0]) {
             listaUtenti.corrente.scene[2].aggiungiComandato(0);
         }
-        if (jCheckBoxMenuItem2.isSelected()) {
+        if (check3[1]) {
             listaUtenti.corrente.scene[2].aggiungiComandato(1);
         }
-        if (jCheckBoxMenuItem3.isSelected()) {
+        if (check3[2]) {
             listaUtenti.corrente.scene[2].aggiungiComandato(2);
         }
 
@@ -912,20 +970,21 @@ public class form_gestione extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
+            listaUtenti.corrente.scene[2].attiva = true;
         } else {
             try {
                 tRichieste.inviaRichiesta("?action=set_scene&data=", "2|false");
             } catch (IOException ex) {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
+            listaUtenti.corrente.scene[2].attiva = false;
         }
 
     }//GEN-LAST:event_jPopupMenu3PopupMenuWillBecomeInvisible
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if (!listaUtenti.corrente.pulsanti[0])
-        {
+        if (!listaUtenti.corrente.pulsanti[0]) {
             listaUtenti.corrente.pulsanti[0] = true;
             try {
                 tRichieste.inviaRichiesta("?action=set_bottoni&data=", "0|true");
@@ -933,9 +992,7 @@ public class form_gestione extends javax.swing.JFrame {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
             jButton2.setText("Spegni");
-        } 
-        else
-        {
+        } else {
             listaUtenti.corrente.pulsanti[0] = false;
             try {
                 tRichieste.inviaRichiesta("?action=set_bottoni&data=", "0|false");
@@ -948,8 +1005,7 @@ public class form_gestione extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if (!listaUtenti.corrente.pulsanti[1])
-        {
+        if (!listaUtenti.corrente.pulsanti[1]) {
             listaUtenti.corrente.pulsanti[1] = true;
             try {
                 tRichieste.inviaRichiesta("?action=set_bottoni&data=", "1|true");
@@ -957,9 +1013,7 @@ public class form_gestione extends javax.swing.JFrame {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
             jButton3.setText("Spegni");
-        } 
-        else
-        {
+        } else {
             listaUtenti.corrente.pulsanti[1] = false;
             try {
                 tRichieste.inviaRichiesta("?action=set_bottoni&data=", "1|false");
@@ -972,8 +1026,7 @@ public class form_gestione extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        if (!listaUtenti.corrente.pulsanti[2])
-        {
+        if (!listaUtenti.corrente.pulsanti[2]) {
             listaUtenti.corrente.pulsanti[2] = true;
             try {
                 tRichieste.inviaRichiesta("?action=set_bottoni&data=", "2|true");
@@ -981,9 +1034,7 @@ public class form_gestione extends javax.swing.JFrame {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
             jButton4.setText("Spegni");
-        } 
-        else
-        {
+        } else {
             listaUtenti.corrente.pulsanti[2] = false;
             try {
                 tRichieste.inviaRichiesta("?action=set_bottoni&data=", "2|false");
@@ -996,87 +1047,123 @@ public class form_gestione extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        
-        if(listaUtenti.corrente.pulsanti[3]==false)
-        {
-            for (int i = 0; i < listaUtenti.corrente.scene[0].pulsantiComandati.size(); i++) 
-                listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[0].pulsantiComandati.get(i)] = true;
-            
-            listaUtenti.corrente.pulsanti[3]=true;
+        if (listaUtenti.corrente.scene[0].attiva) {
+            if (listaUtenti.corrente.pulsanti[3] == false) {
+                for (int i = 0; i < listaUtenti.corrente.scene[0].pulsantiComandati.size(); i++) {
+                    listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[0].pulsantiComandati.get(i)] = true;
+                    try {
+                        tRichieste.inviaRichiesta("?action=set_bottoni&data=", Integer.toString(listaUtenti.corrente.scene[0].pulsantiComandati.get(i))+"|true");
+                    } catch (IOException ex) {
+                        Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+                listaUtenti.corrente.pulsanti[3] = true;
                 try {
-                    tRichieste.inviaRichiesta("?action=set_bottoni&data=","3|true");
+                    tRichieste.inviaRichiesta("?action=set_bottoni&data=", "3|true");
                 } catch (IOException ex) {
                     Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            jButton5.setText("Spegni");
-        }
-        else{
-            for (int i = 0; i < listaUtenti.corrente.scene[0].pulsantiComandati.size(); i++) 
-                listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[0].pulsantiComandati.get(i)] = false;
-            listaUtenti.corrente.pulsanti[3]=false;
+                jButton5.setText("Spegni");
+            } else {
+                for (int i = 0; i < listaUtenti.corrente.scene[0].pulsantiComandati.size(); i++) {
+                    listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[0].pulsantiComandati.get(i)] = false;
+                    try {
+                        tRichieste.inviaRichiesta("?action=set_bottoni&data=", Integer.toString(listaUtenti.corrente.scene[0].pulsantiComandati.get(i))+"|false");
+                    } catch (IOException ex) {
+                        Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                listaUtenti.corrente.pulsanti[3] = false;
                 try {
-                    tRichieste.inviaRichiesta("?action=set_bottoni&data=","3|false");
+                    tRichieste.inviaRichiesta("?action=set_bottoni&data=", "3|false");
                 } catch (IOException ex) {
                     Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 jButton5.setText("Accendi");
+            }
         }
-        
+
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        if(listaUtenti.corrente.pulsanti[4]==false)
-        {
-            for (int i = 0; i < listaUtenti.corrente.scene[1].pulsantiComandati.size(); i++) 
-                listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[1].pulsantiComandati.get(i)] = true;
-            
-            listaUtenti.corrente.pulsanti[4]=true;
+        if (listaUtenti.corrente.scene[1].attiva) {
+            if (listaUtenti.corrente.pulsanti[4] == false) {
+                for (int i = 0; i < listaUtenti.corrente.scene[1].pulsantiComandati.size(); i++) {
+                    listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[1].pulsantiComandati.get(i)] = true;
+                    try {
+                        tRichieste.inviaRichiesta("?action=set_bottoni&data=", Integer.toString(listaUtenti.corrente.scene[1].pulsantiComandati.get(i))+"|true");
+                    } catch (IOException ex) {
+                        Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+                listaUtenti.corrente.pulsanti[4] = true;
                 try {
-                    tRichieste.inviaRichiesta("?action=set_bottoni&data=","4|true");
+                    tRichieste.inviaRichiesta("?action=set_bottoni&data=", "4|true");
                 } catch (IOException ex) {
                     Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            jButton6.setText("Spegni");
-        }
-        else{
-            for (int i = 0; i < listaUtenti.corrente.scene[1].pulsantiComandati.size(); i++) 
-                listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[1].pulsantiComandati.get(i)] = false;
-            listaUtenti.corrente.pulsanti[4]=false;
+                jButton6.setText("Spegni");
+            } else {
+                for (int i = 0; i < listaUtenti.corrente.scene[1].pulsantiComandati.size(); i++) {
+                    listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[1].pulsantiComandati.get(i)] = false;
+                    try {
+                        tRichieste.inviaRichiesta("?action=set_bottoni&data=", Integer.toString(listaUtenti.corrente.scene[1].pulsantiComandati.get(i))+"|false");
+                    } catch (IOException ex) {
+                        Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                listaUtenti.corrente.pulsanti[4] = false;
                 try {
-                    tRichieste.inviaRichiesta("?action=set_bottoni&data=","3|false");
+                    tRichieste.inviaRichiesta("?action=set_bottoni&data=", "4|false");
                 } catch (IOException ex) {
                     Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 jButton6.setText("Accendi");
+            }
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        if(listaUtenti.corrente.pulsanti[5]==false)
-        {
-            for (int i = 0; i < listaUtenti.corrente.scene[2].pulsantiComandati.size(); i++) 
-                listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[2].pulsantiComandati.get(i)] = true;
-            
-            listaUtenti.corrente.pulsanti[5]=true;
+        if (listaUtenti.corrente.scene[2].attiva) {
+            if (listaUtenti.corrente.pulsanti[5] == false) {
+                for (int i = 0; i < listaUtenti.corrente.scene[2].pulsantiComandati.size(); i++) {
+                    listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[2].pulsantiComandati.get(i)] = true;
+                    try {
+                        tRichieste.inviaRichiesta("?action=set_bottoni&data=", Integer.toString(listaUtenti.corrente.scene[2].pulsantiComandati.get(i))+"|true");
+                    } catch (IOException ex) {
+                        Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+                listaUtenti.corrente.pulsanti[5] = true;
                 try {
-                    tRichieste.inviaRichiesta("?action=set_bottoni&data=","5|true");
+                    tRichieste.inviaRichiesta("?action=set_bottoni&data=", "5|true");
                 } catch (IOException ex) {
                     Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            jButton7.setText("Spegni");
-        }
-        else{
-            for (int i = 0; i < listaUtenti.corrente.scene[2].pulsantiComandati.size(); i++) 
-                listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[2].pulsantiComandati.get(i)] = false;
-            listaUtenti.corrente.pulsanti[5]=false;
+                jButton6.setText("Spegni");
+            } else {
+                for (int i = 0; i < listaUtenti.corrente.scene[2].pulsantiComandati.size(); i++) {
+                    listaUtenti.corrente.pulsanti[listaUtenti.corrente.scene[2].pulsantiComandati.get(i)] = false;
+                    try {
+                        tRichieste.inviaRichiesta("?action=set_bottoni&data=", Integer.toString(listaUtenti.corrente.scene[2].pulsantiComandati.get(i))+"|false");
+                    } catch (IOException ex) {
+                        Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                listaUtenti.corrente.pulsanti[5] = false;
                 try {
-                    tRichieste.inviaRichiesta("?action=set_bottoni&data=","3|false");
+                    tRichieste.inviaRichiesta("?action=set_bottoni&data=", "5|false");
                 } catch (IOException ex) {
                     Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                jButton7.setText("Accendi");
+                jButton6.setText("Accendi");
+            }
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -1084,12 +1171,57 @@ public class form_gestione extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < listaUtenti.corrente.pulsanti.length; i++) {
             try {
-                tRichieste.inviaRichiesta("?action=set_bottoni&data=", Integer.toString(i)+"|false");
+                tRichieste.inviaRichiesta("?action=set_bottoni&data=", Integer.toString(i) + "|false");
             } catch (IOException ex) {
                 Logger.getLogger(form_gestione.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void jCheckBoxMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1MousePressed
+        // TODO add your handling code here:
+        check[0] = !check[0];
+    }//GEN-LAST:event_jCheckBoxMenuItem1MousePressed
+
+    private void jCheckBoxMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem2MousePressed
+        // TODO add your handling code here:
+        check[1] = !check[1];
+    }//GEN-LAST:event_jCheckBoxMenuItem2MousePressed
+
+    private void jCheckBoxMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3MousePressed
+        // TODO add your handling code here:
+        check[2] = !check[2];
+    }//GEN-LAST:event_jCheckBoxMenuItem3MousePressed
+
+    private void jCheckBoxMenuItem4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem4MousePressed
+        // TODO add your handling code here:
+        check2[0] = !check2[0];
+    }//GEN-LAST:event_jCheckBoxMenuItem4MousePressed
+
+    private void jCheckBoxMenuItem5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem5MousePressed
+        // TODO add your handling code here:
+        check2[1] = !check2[1];
+    }//GEN-LAST:event_jCheckBoxMenuItem5MousePressed
+
+    private void jCheckBoxMenuItem6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem6MousePressed
+        // TODO add your handling code here:
+        check2[2] = !check2[2];
+    }//GEN-LAST:event_jCheckBoxMenuItem6MousePressed
+
+    private void jCheckBoxMenuItem7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem7MousePressed
+        // TODO add your handling code here:
+        check3[0] = !check3[0];
+    }//GEN-LAST:event_jCheckBoxMenuItem7MousePressed
+
+    private void jCheckBoxMenuItem8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem8MousePressed
+        // TODO add your handling code here:
+        check3[1] = !check3[1];
+    }//GEN-LAST:event_jCheckBoxMenuItem8MousePressed
+
+    private void jCheckBoxMenuItem9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem9MousePressed
+        // TODO add your handling code here:
+        check3[2] = !check3[2];
+    }//GEN-LAST:event_jCheckBoxMenuItem9MousePressed
 
     /**
      * @param args the command line arguments

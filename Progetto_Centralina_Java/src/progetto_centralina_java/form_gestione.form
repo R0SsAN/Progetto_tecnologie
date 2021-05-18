@@ -18,16 +18,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Bottone 1"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBoxMenuItem1MousePressed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Bottone2"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBoxMenuItem2MousePressed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Bottone3"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBoxMenuItem3MousePressed"/>
+          </Events>
         </MenuItem>
       </SubComponents>
     </Container>
@@ -47,16 +56,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Bottone 1"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBoxMenuItem4MousePressed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem5">
           <Properties>
             <Property name="text" type="java.lang.String" value="Bottone2"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBoxMenuItem5MousePressed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem6">
           <Properties>
             <Property name="text" type="java.lang.String" value="Bottone3"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBoxMenuItem6MousePressed"/>
+          </Events>
         </MenuItem>
       </SubComponents>
     </Container>
@@ -76,16 +94,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Bottone 1"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBoxMenuItem7MousePressed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem8">
           <Properties>
             <Property name="text" type="java.lang.String" value="Bottone2"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBoxMenuItem8MousePressed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem9">
           <Properties>
             <Property name="text" type="java.lang.String" value="Bottone3"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCheckBoxMenuItem9MousePressed"/>
+          </Events>
         </MenuItem>
       </SubComponents>
     </Container>

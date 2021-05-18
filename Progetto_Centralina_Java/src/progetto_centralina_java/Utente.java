@@ -48,7 +48,7 @@ public class Utente {
     int distanza2;
 
     //temperatura corrente
-    float temperaturaCorrente;
+    int temperaturaCorrente;
 
     //valore sensore luce
     float valoreLuce;
@@ -70,9 +70,9 @@ public class Utente {
         sistemaSicurezza=false;
         distanzaPredefinita1 = 0;
         distanzaPredefinita2 = 0;
-        distanza1=100;
-        distanza2=100;
-        temperaturaCorrente=30.0f;
+        distanza1=500;
+        distanza2=500;
+        temperaturaCorrente=30;
     }
 
     public Utente(String stringa) {

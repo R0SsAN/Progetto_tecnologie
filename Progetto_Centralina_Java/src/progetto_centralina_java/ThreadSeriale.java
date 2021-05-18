@@ -26,6 +26,8 @@ public class ThreadSeriale extends Thread {
     ThreadSeriale(SerialPort p) {
         portaSeriale = p;
         utenti=Utenti.getInstance();
+        portaSeriale.setComPortTimeouts(SerialPort.TIMEOUT_SCANNER, 0, 0);
+        portaSeriale.openPort();
     }
     
     public void setPortaSeriale(SerialPort p){
@@ -52,6 +54,7 @@ public class ThreadSeriale extends Thread {
             while (scanner.hasNextLine()) {
                 try {
                     String valoreLetto = scanner.nextLine();
+                    System.out.println(valoreLetto);
                     String[] vettore=valoreLetto.split("-");
                     utenti.corrente.valoreLuce=parseInt(vettore[0]);
                     utenti.corrente.distanza1=parseInt(vettore[1]);

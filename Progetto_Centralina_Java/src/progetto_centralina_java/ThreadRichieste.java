@@ -60,7 +60,6 @@ public class ThreadRichieste extends Thread{
         InputStream is = url.openStream();
         try {
             String risultato = IOUtils.toString(is, StandardCharsets.UTF_8);
-            System.out.println(risultato);
             
             
             ObjectMapper mapper = new ObjectMapper();

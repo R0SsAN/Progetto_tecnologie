@@ -9,6 +9,8 @@ import static java.lang.Integer.parseInt;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Lorenzo
@@ -30,7 +32,6 @@ public class ThreadGestioneArduino extends Thread {
     
     public void LogIn(){
         connessioneSeriale = true;
-        this.start();
     }
     
     public void LogOut(){
@@ -41,7 +42,12 @@ public class ThreadGestioneArduino extends Thread {
     public void run(){
         while (connessioneSeriale){
             String s=generaStringaArduino();
-            inviaStringaArduino(s); 
+            inviaStringaArduino(s);
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ThreadGestioneArduino.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -49,8 +55,8 @@ public class ThreadGestioneArduino extends Thread {
         String finale = "";
         
         //pulsanti
-        for (int i = 0; i < listaUtenti.corrente.pulsanti.length; i++) {
-            finale += listaUtenti.corrente.pulsanti[i] ? 1 : 0 + "-";
+        for (int i = 0; i < listaUtenti.corrente.pulsanti.length-3; i++) {
+            finale += (listaUtenti.corrente.pulsanti[i] ? 1 : 0) + "-";
         }
         
         //luci
@@ -91,6 +97,7 @@ public class ThreadGestioneArduino extends Thread {
     }
 
     public void inviaStringaArduino(String s) {
+        System.out.println(s);
         tSeriale.inviaSeriale(s);
     }
 }

@@ -13,9 +13,11 @@ import java.util.ArrayList;
  */
 public class Scena {
     ArrayList<Integer> pulsantiComandati;
+    boolean attiva;
 
     public Scena() {
         pulsantiComandati=new ArrayList<Integer>();
+        attiva=false;
     }
     public Scena(ArrayList<Integer> array){
         this.pulsantiComandati=array;
