@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://user-images.githubusercontent.com/66002210/118729575-74aa6180-b836-11eb-8fe3-c1144ec53b6f.png" width="300"> 
+</p>
+
 # DomoBox
 
 **Version 1.0.0**
