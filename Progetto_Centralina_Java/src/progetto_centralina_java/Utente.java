@@ -63,7 +63,7 @@ public class Utente {
         for (int i = 0; i < scene.length; i++) {
             scene[i]=new Scena();
         }
-        tipoGestioneLuci=false;
+        tipoGestioneLuci=true;
         orarioAccensione = 0;
         orarioSpegnimento = 0;
         temperaturaDesiderata=25;

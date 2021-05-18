@@ -36,14 +36,12 @@ public class InvioTelegram extends TelegramLongPollingBot {
 
     public void inviaAllarme() {
         //commento per ricordare allarme
-        if (utenti.corrente.temperaturaDesiderata == 1) {
-            SendMessage message = new SendMessage();
-            message.setText("ALLARME INTRUSIONE!");
-            try {
-                sendMessage(message);
-            } catch (TelegramApiException ex) {
-                Logger.getLogger(InvioTelegram.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        SendMessage message = new SendMessage();
+        message.setText("ALLARME INTRUSIONE!");
+        try {
+            sendMessage(message);
+        } catch (TelegramApiException ex) {
+            Logger.getLogger(InvioTelegram.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     @Override

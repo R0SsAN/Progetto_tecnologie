@@ -19,6 +19,7 @@ public class ThreadGestioneArduino extends Thread {
     boolean connessioneSeriale;
     Utenti listaUtenti;
     ThreadSeriale tSeriale;
+    InvioTelegram telegram;
     
     
     //genera le stringhe in base alle variabili dell'utente e alle informazioni ricevute dagli arduini
@@ -28,6 +29,7 @@ public class ThreadGestioneArduino extends Thread {
         connessioneSeriale = false;
         listaUtenti = Utenti.getInstance();
         tSeriale=ThreadSeriale.getInstance();
+        telegram=new InvioTelegram();
     }
     
     public void LogIn(){
@@ -44,7 +46,7 @@ public class ThreadGestioneArduino extends Thread {
             String s=generaStringaArduino();
             inviaStringaArduino(s);
             try {
-                Thread.sleep(300);
+                Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ThreadGestioneArduino.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -71,9 +73,9 @@ public class ThreadGestioneArduino extends Thread {
             int oraAccensione = listaUtenti.corrente.orarioAccensione;
             int oraSpegnimento = listaUtenti.corrente.orarioSpegnimento;
             int oraCorrente = parseInt(formatter.format(new Date(System.currentTimeMillis())));
-            if (oraCorrente > oraAccensione || oraCorrente < oraSpegnimento){
+            if (oraCorrente > oraAccensione && oraCorrente < oraSpegnimento){
                 finale += "1-";
-            } else if (oraCorrente < oraAccensione && oraCorrente > oraSpegnimento){
+            } else{
                 finale += "0-";
             }
         }
@@ -86,13 +88,20 @@ public class ThreadGestioneArduino extends Thread {
         }
         
         //buzzer
-        if (listaUtenti.corrente.distanza1 < listaUtenti.corrente.distanzaPredefinita1 || listaUtenti.corrente.distanza2 < listaUtenti.corrente.distanzaPredefinita2){
-            finale += "1";
-            listaUtenti.corrente.allarmeAcceso = true;
-        } else {
-            finale += "0";
-            listaUtenti.corrente.allarmeAcceso = false;
+        if(listaUtenti.corrente.allarmeAcceso)
+        {
+            if (listaUtenti.corrente.distanza1 < listaUtenti.corrente.distanzaPredefinita1 || listaUtenti.corrente.distanza2 < listaUtenti.corrente.distanzaPredefinita2){
+                finale += "1";
+                listaUtenti.corrente.allarmeAcceso = true;
+                telegram.inviaAllarme();
+            } else {
+                finale += "0";
+                listaUtenti.corrente.allarmeAcceso = false;
+            }
         }
+        else
+            finale += "0";
+        listaUtenti.ultima=finale;
         return finale+";";
     }
 

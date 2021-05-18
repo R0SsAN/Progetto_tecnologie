@@ -25,6 +25,7 @@ public class Utenti {
     private final String pathFile = "listautenti.txt";
     //utente attivo in questo momento
     public Utente corrente;
+    public String ultima;
     
     public Utenti() {
         listaUtenti=new ArrayList<Utente>();

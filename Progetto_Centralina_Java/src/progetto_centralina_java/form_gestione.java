@@ -879,11 +879,12 @@ public class form_gestione extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        listaUtenti.corrente.temperaturaDesiderata = parseInt(jTextField2.getText().substring(2));
+        if(jTextField2.getText()!="  ")
+            listaUtenti.corrente.temperaturaDesiderata = parseInt(jTextField2.getText().substring(2));
         listaUtenti.corrente.orarioAccensione = jSlider1.getValue();
         listaUtenti.corrente.orarioSpegnimento = jSlider2.getValue();
-        listaUtenti.corrente.distanza1 = jSlider3.getValue();
-        listaUtenti.corrente.distanza2 = jSlider4.getValue();
+        listaUtenti.corrente.distanzaPredefinita1 = jSlider3.getValue();
+        listaUtenti.corrente.distanzaPredefinita2 = jSlider4.getValue();
         if (jComboBox1.getSelectedIndex() == 0) {
             listaUtenti.corrente.tipoGestioneLuci = true;
         } else {
@@ -897,12 +898,10 @@ public class form_gestione extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jToggleButton1.getText() == "Accendi sistema sicurezza") {
             jToggleButton1.setText("Spegni sistema sicurezza");
-            listaUtenti.corrente.allarmeAcceso = true;
         } else {
             jToggleButton1.setText("Accendi sistema sicurezza");
-            listaUtenti.corrente.allarmeAcceso = true;
         }
-
+        listaUtenti.corrente.allarmeAcceso=!listaUtenti.corrente.allarmeAcceso;
 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
