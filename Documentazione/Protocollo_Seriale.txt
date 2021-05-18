@@ -1,0 +1,35 @@
+Protocollo Comunicazione:
+
+Java --> Arduino principale
+
+(btn1,btn2,btn3,releLuci,releTermo,buzzer)
+
+[int-int-int-int-int-int;]
+
+------------------------------------------------------------------------
+
+Arduino principale --> Arduino sicurezza
+
+(accensione_buzzer)
+
+[int]
+
+------------------------------------------------------------------------
+
+Arduino sicurezza --> Arduino principale
+
+(distanza_sens1,distanza_sens2)
+
+[int-int;]
+
+
+------------------------------------------------------------------------
+
+Arduino principale --> Java
+
+(valoreLuce,valoreTemperatura,distanza_sens1,distanza_sens2)
+
+[int-int-int-int;]
+
+
+-------------------------------------------------------------------------
