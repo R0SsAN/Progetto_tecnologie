@@ -67,29 +67,7 @@ public class ThreadSeriale extends Thread {
             }
         }
     }
-    public void prova()
-    {
-        Scanner scanner = new Scanner(portaSeriale.getInputStream());
-            while (scanner.hasNextLine()) {
-                try {
-                    String valoreLetto = scanner.nextLine().substring(12);
-                    System.out.println(valoreLetto);
-                    String[] vettore=valoreLetto.split("-");
-                    utenti.corrente.valoreLuce=parseInt(vettore[0]);
-                    utenti.corrente.temperaturaCorrente=parseInt(vettore[0]);
-                    utenti.corrente.distanza1=parseInt(vettore[1]);
-                    utenti.corrente.distanza2=parseInt((vettore[2]).substring(0,vettore[2].length()-1));
-                    
-                } catch (Exception e) {
-                    System.out.println("Errore generato");
-                }
-            }
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ThreadSeriale.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
     public void inviaSeriale(String stringa)
     {
         OutputStream prova;
